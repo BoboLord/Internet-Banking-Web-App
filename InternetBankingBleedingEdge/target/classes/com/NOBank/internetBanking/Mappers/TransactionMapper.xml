@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.NOBank.internetBanking.Mappers.TransactionMapper" >
+
+	<resultMap id="TransactionResult" type="Transaction">
+		<id property="id" column="id" />
+		<result property="sender" column="sender"/>
+		<result property="receiver" column="receiver"/>
+		<result property="amount" column="amount"/>
+		<result property="timestamp" column="timestamp"/>
+	</resultMap>
+	
+	<select id="getId" resultType="Transaction" parameterType="String" resultMap="TransactionResult">
+	    SELECT id, password from transactiontable WHERE email = #{email}
+	</select>
+	<select id="selectTransaction" resultType="Transaction" parameterType="String" resultMap="TransactionResult">
+	    SELECT sender, receiver, amount, timestamp  from transactiontable WHERE (sender = #{account} OR receiver = #{account})
+	</select>	
+	<insert id="insertTransaction" parameterType="Transaction">
+		INSERT into transactiontable (sender, receiver, amount, timestamp) VALUES(#{sender}, #{receiver}, #{amount}, #{timestamp})    
+	</insert>
+	<delete id="deleteTransaction" parameterType="Transaction">
+		DELETE FROM transactiontable WHERE sender = #{sender} AND timestamp = #{timestamp}	    
+	</delete>
+</mapper> 

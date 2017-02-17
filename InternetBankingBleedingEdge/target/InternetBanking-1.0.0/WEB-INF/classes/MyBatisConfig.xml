@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <typeAliases>
+     <typeAlias type="com.NOBank.internetBanking.Model.UserAccount" alias="UserAccount"/>
+     <typeAlias type="com.NOBank.internetBanking.Model.Transaction" alias="Transaction"/>
+  </typeAliases>  
+  <environments default="main">
+    <environment id="main">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/java_app?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/NOBank/internetBanking/Mappers/UserAccountMapper.xml" />
+    <mapper resource="com/NOBank/internetBanking/Mappers/TransactionMapper.xml" />
+  </mappers>
+</configuration> 
+ 
