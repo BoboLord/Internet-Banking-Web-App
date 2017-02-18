@@ -14,16 +14,16 @@ public class UserAccount {
 	private String DOB;
 	
 	private String account1;
-	private String account2 ="na";
-	private String account3 ="na";
-	private String account4 ="na";
-	private String account5 ="na";
+	private String account2;
+	private String account3;
+	private String account4;
+	private String account5;
 	
-	private String beneficiary1 ="na";
-	private String beneficiary2 ="na";
-	private String beneficiary3 ="na";
-	private String beneficiary4 ="na";
-	private String beneficiary5 ="na";
+	private String beneficiary1;
+	private String beneficiary2;
+	private String beneficiary3;
+	private String beneficiary4;
+	private String beneficiary5;
 	
 	public int getId() {
 		return id;

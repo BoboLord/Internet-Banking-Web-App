@@ -3,10 +3,10 @@ package com.NOBank.internetBanking.Model;
 
 public class Transaction {
 
-	public String sender = "-1";
-	public String receiver = "-1";
-	public int amount = -1;
-	public String timestamp = "-1";
+	public String sender;
+	public String receiver;
+	public int amount;
+	public String timestamp;
 	public String getSender() {
 		return sender;
 	}

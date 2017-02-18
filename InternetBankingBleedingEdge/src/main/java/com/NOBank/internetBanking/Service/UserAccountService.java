@@ -3,7 +3,6 @@ package com.NOBank.internetBanking.Service;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.NOBank.internetBanking.DAO.UserAccountDAO;
@@ -23,45 +22,26 @@ public class UserAccountService {
     private UserAccountDAO userAccountDAO;
     @Autowired
     private TransactionDAO transactionDAO;
+    
 	@Transactional
-    public void save(UserAccount useraccount) {
-		
-		userAccountDAO.save(useraccount);
+    public void save(UserAccount userAccount) {	
+		userAccountDAO.save(userAccount);
     }
 
-    
-	private static List<UserAccount> users;
 	
+	@Transactional
+	public UserAccount authentication(UserAccount userAccount) {
+		userAccount = userAccountDAO.getAccountData(userAccount);
+		return userAccount;
+	}
+
 	
 	@Transactional
 	public List<UserAccount> retreiveAllUsers() {
-		
 		List<UserAccount> users =userAccountDAO.retreiveAllAccounts();
-        for(UserAccount user : users) {
-            System.out.println(user.getFirstname());
-        }
-
-		return users;
+ 		return users;
 	}
 	
-	public UserAccount findById(int id) {
-		for(UserAccount user : users){
-			if(user.getId() == id){
-				return user;
-			}
-		}
-		return null;
-	}
-	
-	public UserAccount findByFirstname(String name) {
-		for(UserAccount user : users){
-			if(user.getFirstname().equalsIgnoreCase(name)){
-				return user;
-			}
-		}
-		return null;
-	}
-
 	public void saveUserAccount(UserAccount useraccount){
 		
 		enterEmail(useraccount);

@@ -74,18 +74,9 @@ public class UserController {
     }
 
 
-
-	@RequestMapping(value="/accounts", method=RequestMethod.GET)
-	public @ResponseBody List<UserAccount> findAllUsers() {
-
-	    List<UserAccount> users = new ArrayList<UserAccount>();
-	    return users;
-	}
-
     @RequestMapping(value="/useraccounts", method=RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody List<UserAccount> list(Model model) {
-
         return userAccountDAO.retreiveAllAccounts();
     }
 
@@ -97,14 +88,10 @@ public class UserController {
 
     
 	@RequestMapping(value = "/authentication", method = RequestMethod.POST)
-	public @ResponseBody UserAccount authentication(@RequestBody UserAccount userAccount1) {
-		UserAccount userAccount = userAccountDAO.getAccountData(userAccount1);
-	//	System.out.println(userAccount.getEmail());
-	//	System.out.println(userAccount.getPassword());
-	//	System.out.println(userAccount.getFirstname());
-	//	System.out.println(userAccount.getPhone());
-	//	System.out.println(userAccount.getDOB());
-	
+	public @ResponseBody UserAccount authentication(@RequestBody UserAccount userAccount) {
+		userAccount = userAccountService.authentication(userAccount);
 		return userAccount;
 	}
+	
+	
 }
